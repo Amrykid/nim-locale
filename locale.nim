@@ -42,18 +42,14 @@ when defined(windows):
 else:
     import parseutils
     #TODO for *nix. MUST be named GetLocale and return name of the language.
-    proc getenv*(name: cstring): cstring {.header: stdlib, importc: "getenv".}
+    #proc getenv*(name: cstring): cstring {.header: "stdlib.h", importc: "getenv".}
     proc GetLocaleFromEnv(): string =
-        var LANG = getenv("LANG")
+        var LANG = os.getenv("LANG")
         if lang == "":
             # Language not set.
             return "Unknown"
         else:
-            var langstr = $LANG
-            
-            var langname = parseutils.parseUntil(langstr, '_')
-            
-            return langname
+            discard parseutils.parseUntil(LANG, result, '_')
  
 type
   TLocaleManager* = object #An object used for localization via xml/cfg.
@@ -64,7 +60,7 @@ proc GetLocaleName*(): string =
   ## Retrieves the user's locale/language as an ISO 639-1 code string.
   when defined(windows):
       return GetWinLocaleName()
-  elif defined(postix):
+  else:
       #TODO for *nix
       return GetLocaleFromEnv()
 
