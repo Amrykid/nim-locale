@@ -12,7 +12,7 @@
 ## Implements a simple way to load strings based on the user's locale name.
 ##
 ## .. code-block:: Nimrod
-##    initLocale(LocaleManager, r"C:\Users\Alex\Documents\Random\LocaleData.cfg") #Loads a config file with the localized strings.
+##    initLocale(LocaleManager, "LocaleData.cfg") #Loads a config file with the localized strings.
 ##    echo(LocaleManager.getKey("Hello")) #Prints the localized string for the user's locale.
 ##    echo(LocaleManager.getKeyLang("Hello","de")) #Prints the localized string in the specified locale.
 ##    echo(<$>"Hello")
@@ -150,7 +150,7 @@ var
 # DEBUGING TEST    
 when isMainModule:
     echo(GetLocaleName()) #Prints English
-    loadCfgLocaleData(LocaleManager, r"C:\Users\Alex\Documents\Random\LocaleData.cfg")
+    loadCfgLocaleData(LocaleManager, "LocaleData.cfg")
     echo(LocaleManager.getKey("Hello"))
     echo(LocaleManager.getKeyLang("Hello","de"))
     echo(<$>("Hello"))
