@@ -18,8 +18,9 @@
 ##    echo(<$>"Hello")
 ##
 ##
-## Example CFG file
-## .. code-block
+## Example CFG file:
+##
+## .. code-block::
 ##    SectionLang = en
 ##    [Hello] ;SectionLang makes Section headers into keys that are in that language.
 ##    es = "Hola"
