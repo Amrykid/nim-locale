@@ -46,7 +46,7 @@ else:
     #proc getenv*(name: cstring): cstring {.header: "stdlib.h", importc: "getenv".}
     proc GetLocaleFromEnv(): string =
         var LANG = os.getenv("LANG")
-        if lang == "":
+        if LANG == "":
             # Language not set.
             return "Unknown"
         else:
